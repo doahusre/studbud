@@ -50,6 +50,20 @@ def swipe_right():
 def view_buddies():
     return render_template('buddies.html', users=buddies)
 
+# PLEASE USE THIS ENDPOINT TO REMOVE A BUDDY
+@app.route('/remove_buddy', methods=['POST'])
+def remove_buddy():
+    data = request.get_json()
+    print(data)
+    user_id = int(data['user_id'])
+    if user_id:
+        for student in buddies:
+            if student.id == user_id:
+                dummy_students.append(student)
+                buddies.remove(student)
+                return jsonify({"message": "User removed successfully"}), 200
+    return jsonify({"message": "Invalid data"}), 400
+
 if __name__ == '__main__':
     populate_dummy(20)
     app.run(debug=True)

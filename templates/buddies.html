@@ -66,7 +66,6 @@
             bottom: 0;
             width: 100%;
         }
-
         .bottom-bar {
             position: fixed;
             bottom: 0;
@@ -78,11 +77,9 @@
             display: flex;
             justify-content: space-around;
         }
-
         .bottom-bar form {
             margin: 0;
         }
-
         .bottom-bar input[type="submit"] {
             background-color: #007bff;
             color: white;
@@ -91,9 +88,20 @@
             cursor: pointer;
             border-radius: 4px;
         }
-
         .bottom-bar input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+        .remove-button {
+            background-color: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .remove-button:hover {
+            background-color: #ff1f3a;
         }
     </style>
 </head>
@@ -109,11 +117,11 @@
                 <div class="student">
                     <h2>{{ student.name }}</h2>
                     <p>{{ student.status }}</p>
+                    <button class="remove-button" onclick="removeBuddy('{{ student.id }}')">Remove Buddy</button>
                 </div>
             {% endfor %}
         </div>
     </div>
-
     <div class="bottom-bar">
         <form method="GET" action="/map">
             <input type="submit" value="Buddy Map">
@@ -125,6 +133,27 @@
             <input type="submit" value="Find Buddies">
         </form>
     </div>
+    <script>
+        function removeBuddy(userId) {
+            fetch('/remove_buddy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_id: userId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === "User removed successfully") {
+                    location.reload();
+                } else {
+                    alert("Failed to remove buddy");
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
 </body>
 </html>
-
