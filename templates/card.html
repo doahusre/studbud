@@ -12,7 +12,7 @@
         }
 
         body {
-            background: #CCFBFE;
+            background: #3B3355;
             overflow: hidden;
             font-family: sans-serif;
         }
@@ -48,9 +48,7 @@
             opacity: 0;
             transform: scale(0.3);
             transition: all 0.2s ease-in-out;
-            position: absolute;
             width: 100px;
-            margin-left: -50px;
         }
 
         .tinder_love .fa-heart {
@@ -190,7 +188,6 @@
             {% for student in users %}
             <div class="tinder--card" data-user-id="{{ student.id }}">
                 <h3>{{ student.name }}</h3>
-                <p>{{ student.status }}</p>
             </div>
             {% endfor %}
         </div>
@@ -293,6 +290,8 @@
         function createButtonListener(love) {
             return function (event) {
                 var cards = document.querySelectorAll('.tinder--card:not(.removed)');
+
+                var status = document.querySelectorAll('.fa-remove');
                 var moveOutWidth = document.body.clientWidth * 1.5;
 
                 if (!cards.length) return false;
@@ -303,8 +302,11 @@
 
                 if (love) {
                     card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+                    //set to display none
+                    status.style.setProperty('display', 'none');
                     swipeRight(card.getAttribute('data-user-id')); // Swiped right
                 } else {
+
                     card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
                 }
 
