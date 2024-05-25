@@ -2,16 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tinder-like Swipe</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Study Buddy - Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tinder-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 8px;
+            width: 100%;
+            max-width: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .bottom-bar form {
+            margin: 0;
+        }
+
+        .bottom-bar input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .bottom-bar input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div class="card-container">
-        <div class="card">Card 1</div>
-        <div class="card">Card 2</div>
-        <div class="card">Card 3</div>
+    <div class="content">
+        <div id="tinder-cards" class="cards-container">
+            {% for user in users %}
+            <div class="tinder-card" data-user-id="{{ user.id }}">
+                <h2>{{ user.name }}</h2>
+                <p>Gender: {{ user.gender }}</p>
+                <p>Location: {{ user.latitude }}, {{ user.longitude }}</p>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="bottom-bar">
+        <form method="GET" action="/map">
+            <input type="submit" value="Study Buddy Map">
+        </form>
+        <form method="GET" action="/cards">
+            <input type="submit" value="Study Buddy Cards">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardsContainer = document.getElementById('tinder-cards');
+            const allCards = document.querySelectorAll('.tinder-card');
+
+            function handleSwipe(card, direction) {
+                const userId = card.getAttribute('data-user-id');
+                if (direction === 'right') {
+                    // Send request to add user to buddy list
+                    fetch('/add_buddy', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ user_id: userId })
+                    }).then(response => {
+                        if (response.ok) {
+                            card.remove();
+                        }
+                    });
+                } else {
+                    card.remove();
+                }
+            }
+
+            allCards.forEach(card => {
+                let offsetX = 0;
+                let isDragging = false;
+
+                card.addEventListener('mousedown', (event) => {
+                    isDragging = true;
+                    offsetX = event.clientX - card.offsetLeft;
+                    card.style.transition = 'none';
+                });
+
+                document.addEventListener('mousemove', (event) => {
+                    if (isDragging) {
+                        card.style.left = `${event.clientX - offsetX}px`;
+                    }
+                });
+
+                document.addEventListener('mouseup', (event) => {
+                    if (isDragging) {
+                        const direction = event.clientX - offsetX > window.innerWidth / 2 ? 'right' : 'left';
+                        card.style.transition = 'all 0.3s';
+                        handleSwipe(card, direction);
+                        isDragging = false;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
