@@ -291,7 +291,6 @@
             return function (event) {
                 var cards = document.querySelectorAll('.tinder--card:not(.removed)');
 
-                var status = document.querySelectorAll('.fa-remove');
                 var moveOutWidth = document.body.clientWidth * 1.5;
 
                 if (!cards.length) return false;
@@ -302,8 +301,6 @@
 
                 if (love) {
                     card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-                    //set to display none
-                    status.style.setProperty('display', 'none');
                     swipeRight(card.getAttribute('data-user-id')); // Swiped right
                 } else {
 
