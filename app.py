@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from student import Student
+from entities import Student, User
 import random
 import string
 
@@ -10,13 +10,15 @@ app = Flask(__name__)
 dummy_students = []
 def populate_dummy(n):
 # Create dummy student data
+    progams = ['Computer Science', 'Software Engineering', 'Electrical Engineering', 'Mechanical Engineering', 'Civil Engineering', 'Biomedical Engineering', 'Mathematics', 'Physics', 'Chemistry', 'Biology']
     courses = ['CSC 110', 'CSC 115', 'CSC 225', 'CSC 230', 'CSC 360', 'CSC 370', 'CSC 110', 'CSC 115', 'CSC 225', 'CSC 230', 'CSC 360', 'CSC 370']
     for i in range(n):
         name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
         latitude = random.uniform(48.4620, 48.4639)
         longitude = random.uniform(-123.3120, -123.3100)
         sample_courses = random.sample(courses, random.randint(1, 3))
-        student = Student(i, name, latitude, longitude, sample_courses)
+        program = random.choice(progams)
+        student = Student(i, name, latitude, longitude, sample_courses, program)
         dummy_students.append(student)
 
 buddies = []
@@ -65,6 +67,10 @@ def remove_buddy():
                 buddies.remove(student)
                 return jsonify({"message": "User removed successfully"}), 200
     return jsonify({"message": "Invalid data"}), 400
+
+@app.route('/profile')
+def view_profile():
+    return render_template('profile.html')
 
 if __name__ == '__main__':
     populate_dummy(20)

@@ -117,23 +117,27 @@
                 <div class="student">
                     <h2>{{ student.name }}</h2>
                     <p>Status: {{ student.status }}</p>
+                    <p>Program: {{ student.program }}</p>
                     <p>Courses: {{ student.courses }}</p>
                     <button class="remove-button" onclick="removeBuddy('{{ student.id }}')">Remove Buddy</button>
                 </div>
             {% endfor %}
         </div>
     </div>
-    <div class="bottom-bar">
-        <form method="GET" action="/map">
-            <input type="submit" value="Buddy Map">
-        </form>
-        <form method="GET" action="/buddies">
-            <input type="submit" value="Study Buddies">
-        </form>
-        <form method="GET" action="/cards">
-            <input type="submit" value="Find Buddies">
-        </form>
-    </div>
+            <div class="bottom-bar">
+            <form method="GET" action="/map">
+                <input type="submit" value="Buddy Map">
+            </form>
+            <form method="GET" action="/buddies">
+                <input type="submit" value="Study Buddies">
+            </form>
+            <form method="GET" action="/cards">
+                <input type="submit" value="Find Buddies">
+            </form>
+            <form method="GET" action="/Profile">
+                <input type="submit" value="Profile">
+            </form>
+        </div>
     <script>
         function removeBuddy(userId) {
             fetch('/remove_buddy', {
