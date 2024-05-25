@@ -13,7 +13,7 @@ def create_map(students):
     # Coordinates for UVic Campus
     uvic_latitude = 48.4634
     uvic_longitude = -123.3117
-    zoom_start = 17
+    zoom_start = 16
 
     map = folium.Map(location=[uvic_latitude, uvic_longitude], zoom_start=zoom_start, tiles='cartodbpositron')
 
