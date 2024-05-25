@@ -12,8 +12,8 @@ def populate_dummy(n):
 # Create dummy student data
     for i in range(n):
         name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-        latitude = random.uniform(48.4629, 48.4634)
-        longitude = random.uniform(-123.3116, -123.3106)
+        latitude = random.uniform(48.4620, 48.4639)
+        longitude = random.uniform(-123.3120, -123.3100)
         student = Student(i, name, latitude, longitude)
         dummy_students.append(student)
 
