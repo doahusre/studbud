@@ -116,7 +116,8 @@
             {% for student in users %}
                 <div class="student">
                     <h2>{{ student.name }}</h2>
-                    <p>{{ student.status }}</p>
+                    <p>Status: {{ student.status }}</p>
+                    <p>Courses: {{ student.courses }}</p>
                     <button class="remove-button" onclick="removeBuddy('{{ student.id }}')">Remove Buddy</button>
                 </div>
             {% endfor %}

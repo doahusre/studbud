@@ -9,9 +9,10 @@
 #     longitude = db.Column(db.Float, nullable=False)
 
 class Student:
-    def __init__(self, id, name, latitude, longitude, status='Studying'):
+    def __init__(self, id, name, latitude, longitude, courses=[], status='Studying'):
         self.id = id
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
         self.status = status
+        self.courses = courses

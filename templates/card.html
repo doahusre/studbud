@@ -188,6 +188,7 @@
             {% for student in users %}
             <div class="tinder--card" data-user-id="{{ student.id }}">
                 <h3>{{ student.name }}</h3>
+                <p>Courses: {{ student.courses }}</p>
             </div>
             {% endfor %}
         </div>
