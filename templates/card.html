@@ -12,7 +12,7 @@
         }
 
         body {
-            background: #3B3355;
+            background: #35524A;
             overflow: hidden;
             font-family: sans-serif;
         }
@@ -52,12 +52,12 @@
         }
 
         .tinder_love .fa-heart {
-            opacity: 0.7;
+            opacity: 0.99;
             transform: scale(1);
         }
 
         .tinder_nope .fa-remove {
-            opacity: 0.7;
+            opacity: 0.99;
             transform: scale(1);
         }
 
@@ -140,23 +140,21 @@
         }
 
         .fa-heart {
-            color: #FFACE4;
+            color: #92140C;
         }
 
         .fa-remove {
-            color: #CDD6DD;
+            color: #353238;
         }
 
-        .bottom-bar {
+                .bottom-bar {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #fff;
-            border-top: 1px solid #dee2e6;
-            text-align: center;
-            padding: 10px 0;
+            background-color: #EDF4ED;
             display: flex;
             justify-content: space-around;
+            padding: 10px 0;
         }
 
         .bottom-bar form {
@@ -164,7 +162,7 @@
         }
 
         .bottom-bar input[type="submit"] {
-            background-color: #007bff;
+            background-color: #35524A;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -173,8 +171,9 @@
         }
 
         .bottom-bar input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #79B791;
         }
+
     </style>
 </head>
 <body>
@@ -199,18 +198,20 @@
             <button id="love"><i class="fa fa-heart"></i></button>
         </div>
     </div>
-
-    <div class="bottom-bar">
-        <form method="GET" action="/map">
-            <input type="submit" value="Buddy Map">
-        </form>
-        <form method="GET" action="/buddies">
-            <input type="submit" value="Study Buddies">
-        </form>
-        <form method="GET" action="/cards">
-            <input type="submit" value="Find Buddies">
-        </form>
-    </div>
+            <div class="bottom-bar">
+            <form method="GET" action="/map">
+                <input type="submit" value="Buddy Map">
+            </form>
+            <form method="GET" action="/buddies">
+                <input type="submit" value="Study Buddies">
+            </form>
+            <form method="GET" action="/cards">
+                <input type="submit" value="Find Buddies">
+            </form>
+            <form method="GET" action="/profile">
+                <input type="submit" value="Profile">
+            </form>
+        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

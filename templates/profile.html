@@ -20,21 +20,22 @@
 }
 
 body {
-    background-color: #e8f5ff;
+    background-color: #35524A;
     font-family: Arial;
     overflow: hidden;
 }
 
 /* Main */
 .main {
+    margin-left: 10px;
     margin-top: 2%;
+    margin-bottom: 2%;
     font-size: 28px;
-    padding: 0 10px;
-    width: 58%;
+    width: 99%;
 }
 
 .main h2 {
-    color: #333;
+    color: #EDF4ED;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
     margin-bottom: 10px;
@@ -56,41 +57,33 @@ body {
     width: 80%;
 }
 
-.edit {
-    position: absolute;
-    color: #e7e7e8;
-    right: 14%;
-}
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #EDF4ED;
+            border-top: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
 
-.bottom-bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f8f9fa;
-    border-top: 1px solid #dee2e6;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-}
+        .bottom-bar form {
+            margin: 0;
+        }
 
-.bottom-bar form {
-    margin: 0;
-}
+        .bottom-bar input[type="submit"] {
+            background-color: #35524A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
 
-.bottom-bar input[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.bottom-bar input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-
+        .bottom-bar input[type="submit"]:hover {
+            background-color: #79B791;
+        }
 /* End */
     </style>
 <body>
@@ -99,12 +92,12 @@ body {
         <h2>IDENTITY</h2>
         <div class="card">
             <div class="card-body">
-                <i class="fa fa-pen fa-xs edit"></i>
                 <table>
                     <tbody>
                         <tr>
                             <td>Name</td>
                             <td>:</td>
+                            <td>John Doe</td>
                         </tr>
                         <tr>
                             <td>Email</td>
@@ -126,6 +119,9 @@ body {
             </div>
         </div>
 
+
+
+    </div>
         <div class="bottom-bar">
             <form method="GET" action="/map">
                 <input type="submit" value="Buddy Map">
@@ -136,13 +132,10 @@ body {
             <form method="GET" action="/cards">
                 <input type="submit" value="Find Buddies">
             </form>
-            <form method="GET" action="/Profile">
+            <form method="GET" action="/profile">
                 <input type="submit" value="Profile">
             </form>
         </div>
-
-
-    </div>
     <!-- End -->
 </body>
 </html>

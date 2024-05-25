@@ -7,7 +7,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #35524A;
         }
         .container {
             width: 80%;
@@ -15,7 +15,6 @@
             overflow: hidden;
         }
         header {
-            background: #35424a;
             color: #ffffff;
             padding-top: 30px;
             min-height: 70px;
@@ -43,7 +42,7 @@
         }
         .student {
             background: #ffffff;
-            border: #cccccc 1px solid;
+            border: #301014 1px solid;
             border-radius: 10px;
             padding: 20px;
             margin: 10px;
@@ -57,52 +56,34 @@
         .student p {
             color: #666666;
         }
-        footer {
-            background: #35424a;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-        .bottom-bar {
+                .bottom-bar {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #fff;
-            border-top: 1px solid #dee2e6;
-            text-align: center;
-            padding: 10px 0;
+            background-color: #EDF4ED;
+            border-top: 1px solid #301014;
             display: flex;
             justify-content: space-around;
+            padding: 10px 0;
         }
+
         .bottom-bar form {
             margin: 0;
         }
+
         .bottom-bar input[type="submit"] {
-            background-color: #007bff;
+            background-color: #35524A;
             color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 4px;
         }
+
         .bottom-bar input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #79B791;
         }
-        .remove-button {
-            background-color: #ff4b5c;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-        .remove-button:hover {
-            background-color: #ff1f3a;
-        }
+
     </style>
 </head>
 <body>
@@ -134,7 +115,7 @@
             <form method="GET" action="/cards">
                 <input type="submit" value="Find Buddies">
             </form>
-            <form method="GET" action="/Profile">
+            <form method="GET" action="/profile">
                 <input type="submit" value="Profile">
             </form>
         </div>
