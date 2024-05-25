@@ -189,6 +189,7 @@
             <div class="tinder--card" data-user-id="{{ student.id }}">
                 <h3>{{ student.name }}</h3>
                 <p>Courses: {{ student.courses }}</p>
+                <img src="{{ url_for('static', filename='icons/boy_buddy.png') }}" alt="Buddy Icon">
             </div>
             {% endfor %}
         </div>
