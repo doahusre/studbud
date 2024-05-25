@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Map View</title>
+    <title>Buddy Map</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <style>
@@ -46,12 +46,16 @@
     {{ map|safe }}
     <div class="bottom-bar">
         <form method="GET" action="/map">
-            <input type="submit" value="Study Buddy Map">
+            <input type="submit" value="Buddy Map">
+        </form>
+        <form method="GET" action="/buddies">
+            <input type="submit" value="Study Buddies">
         </form>
         <form method="GET" action="/cards">
-            <input type="submit" value="Study Buddy Cards">
+            <input type="submit" value="Find Buddies">
         </form>
     </div>
+
 
 </body>
 </html>

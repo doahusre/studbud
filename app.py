@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from student import Student
+from time import sleep
 
 from map import create_map
 
@@ -20,11 +21,17 @@ def index():
 
 @app.route('/map')
 def view_map():
-    return render_template('map.html', map=create_map(dummy_students))
+    map = create_map(dummy_students)
+    return render_template('map.html', map=map)
+
 
 @app.route('/cards', methods=['GET'])
 def view_card():
     return render_template('card.html', users=dummy_students)
+
+@app.route('/buddies')
+def view_buddies():
+    return render_template('buddies.html', users=dummy_students)
 
 if __name__ == '__main__':
     app.run(debug=True)
