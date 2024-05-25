@@ -1,8 +1,5 @@
-from flask import Flask, render_template, request
 from student import Student
 import folium
-
-app = Flask(__name__)
 
 # Create custom icons
 girl_icon = folium.CustomIcon(icon_image='icons/girl_buddy.png', icon_size=(30, 30))
@@ -11,9 +8,9 @@ girl_icon = folium.CustomIcon(icon_image='icons/girl_buddy.png', icon_size=(30, 
 dummy_students = [
     Student('Alice', 48.4634, -123.3117),
     Student('Bob', 48.4634, -123.311),
-    Student('Charlie', 48.4634, -123.310),
-    Student('Diana', 48.4634, -123.309),
-    Student('Eve', 48.4634, -123.308),
+    Student('Charlie', 48.4629, -123.310),
+    Student('Diana', 48.4630, -123.309),
+    Student('Eve', 48.4632, -123.308),
 ]
 
 def create_popup(student):
@@ -25,12 +22,7 @@ def create_popup(student):
     """
     return folium.Popup(popup_html, max_width=2650)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/map', methods=['POST'])
-def map_view():
+def create_map():
     # Coordinates for UVic Campus
     uvic_latitude = 48.4634
     uvic_longitude = -123.3117
@@ -48,8 +40,3 @@ def map_view():
         ).add_to(map)
 
     map.save('templates/map.html')
-    return render_template('map.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
